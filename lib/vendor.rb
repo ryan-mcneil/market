@@ -13,4 +13,14 @@ class Vendor
   def stock(item, count)
     @inventory[item] += count
   end
+
+  def sell(item, count)
+    if count > check_stock(item)
+      0
+    else
+
+
+  # def items_in_stock
+  #   @inventory.map do |item, count|
+  #     item
 end

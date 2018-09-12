@@ -22,5 +22,28 @@ class Market
     end
   end
 
+  def sorted_item_list
+    @vendors.inject([]) do |array, vendor|
+      array << vendor.inventory.keys
+    end.flatten.uniq.sort
+  end
+
+  def total_inventory
+    hash = Hash.new(0)
+    @vendors.each do |vendor|
+      vendor.inventory.each do |item, stock|
+        hash[item] += stock
+      end
+    end
+    hash
+  end
+
+  def sell(item, count)
+    if total_inventory[item] > count
+      
+
+
+  end
+
 
 end
