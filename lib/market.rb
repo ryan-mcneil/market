@@ -29,13 +29,12 @@ class Market
   end
 
   def total_inventory
-    hash = Hash.new(0)
-    @vendors.each do |vendor|
+    @vendors.inject(Hash.new(0)) do |hash, vendor|
       vendor.inventory.each do |item, stock|
         hash[item] += stock
       end
+      hash
     end
-    hash
   end
 
   def sell(item, count)
@@ -45,6 +44,5 @@ class Market
       end
     end
   end
-
 
 end
