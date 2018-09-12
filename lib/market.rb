@@ -40,9 +40,10 @@ class Market
 
   def sell(item, count)
     if total_inventory[item] > count
-      
-
-
+      @vendors.each do |vendor|
+        count = vendor.sell(item, count) if count > 0
+      end
+    end
   end
 
 

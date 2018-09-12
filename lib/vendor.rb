@@ -15,9 +15,16 @@ class Vendor
   end
 
   def sell(item, count)
-    if count > check_stock(item)
-      0
+    if count > @inventory[item]
+      count -= @inventory[item]
+      @inventory[item] = 0
+      count
     else
+      @inventory[item] -= count
+      0
+    end
+  end
+
 
 
   # def items_in_stock
